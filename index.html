@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign-up Form</title>
+    <style>
+        body {
+            font-family: Monotype Corsiva;
+            background-color: #0c0b0c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg');
+        }
+        .container {
+            font-family: Monotype Corsiva;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        h2 {
+            font-family: Monotype Corsiva;
+            text-align: center;
+        }
+        label {
+            font-family: Monotype Corsiva;
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            font-family: Monotype Corsiva;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign-up Form</h2>
+        <form id="signupForm">
+            <label for="email">User Email:</label>
+            <input type="text" id="email" name="email" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <div id="error" class="error"></div>
+            <button type="button" onclick="validateForm()">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var error = document.getElementById("error");
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            var passwordPattern = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/;
+
+            if (!emailPattern.test(email)) {
+                error.innerHTML = "Invalid email address";
+                return;
+            }
+
+            if (!passwordPattern.test(password)) {
+                error.innerHTML = "Invalid password. It must be at least 8 characters and contain at least one uppercase letter, one special character, and one number.";
+                return;
+            }
+            
+            alert("Sign-up successful!");
+        }
+    </script>
+</body>
+</html>
